@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Gerenciar Notícias</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <!-- TELA DE LOGIN -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-card">
+            <div class="login-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h1>Área Restrita</h1>
+            <p>Digite a senha para acessar o painel administrativo.</p>
+            <form id="loginForm">
+                <div class="input-group">
+                    <i class="fas fa-key"></i>
+                    <input type="password" id="loginPassword" placeholder="Senha de acesso" autocomplete="off" autofocus>
+                </div>
+                <button type="submit" class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i> Entrar
+                </button>
+                <p id="loginError" class="login-error" style="display:none;">
+                    <i class="fas fa-exclamation-circle"></i> Senha incorreta
+                </p>
+            </form>
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Voltar ao site</a>
+        </div>
+    </div>
+
+    <!-- PAINEL ADMIN -->
+    <div id="adminPanel" class="admin-panel" style="display:none;">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-cog"></i> Admin</h2>
+                <span class="sidebar-badge">Painel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link active" data-section="noticias">
+                    <i class="fas fa-newspaper"></i> Notícias
+                </a>
+                <a href="#" class="sidebar-link" data-section="preview">
+                    <i class="fas fa-eye"></i> Preview
+                </a>
+                <a href="index.html" class="sidebar-link">
+                    <i class="fas fa-globe"></i> Ver Site
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+
+            <!-- Header -->
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <button id="sidebarToggle" class="sidebar-toggle-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 id="pageTitle">Gerenciar Notícias</h1>
+                </div>
+                <div class="admin-header-right">
+                    <span id="newsCount" class="news-count">0 notícias</span>
+                    <button id="resetBtn" class="btn-reset" title="Restaurar notícias originais">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                    <button id="addNewsBtn" class="btn-add">
+                        <i class="fas fa-plus"></i> Nova Notícia
+                    </button>
+                </div>
+            </header>
+
+            <!-- Seção de Notícias -->
+            <section id="secNoticias" class="admin-section">
+                
+                <!-- Filtros do Admin -->
+                <div class="admin-filters">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Buscar notícias...">
+                    </div>
+                    <select id="filterCategory" class="admin-select">
+                        <option value="">Todos os filtros</option>
+                        <option value="corrupcao">Corrupção</option>
+                        <option value="justica">Justiça</option>
+                        <option value="poder">Abuso de Poder</option>
+                        <option value="hipocrisia">Hipocrisia</option>
+                    </select>
+                </div>
+
+                <!-- Tabela de Notícias -->
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th width="5%">#</th>
+                                <th width="22%">Título</th>
+                                <th width="12%">Categoria</th>
+                                <th width="10%">Filtro</th>
+                                <th width="8%">Severidade</th>
+                                <th width="8%">Ano</th>
+                                <th width="8%">Fonte</th>
+                                <th width="12%">Link</th>
+                                <th width="15%">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="newsTableBody">
+                            <tr>
+                                <td colspan="9" class="loading-row">
+                                    <i class="fas fa-spinner fa-spin"></i> Carregando...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="emptyState" class="empty-state" style="display:none;">
+                    <i class="fas fa-inbox"></i>
+                    <h3>Nenhuma notícia encontrada</h3>
+                    <p>Clique em "Nova Notícia" para adicionar.</p>
+                </div>
+            </section>
+
+            <!-- Seção Preview -->
+            <section id="secPreview" class="admin-section" style="display:none;">
+                <div class="preview-frame">
+                    <iframe src="index.html" id="previewIframe" class="preview-iframe"></iframe>
+                </div>
+                <button id="refreshPreview" class="btn-refresh">
+                    <i class="fas fa-sync-alt"></i> Atualizar Preview
+                </button>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL: Adicionar/Editar Notícia -->
+    <div id="newsModal" class="modal-overlay" style="display:none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle"><i class="fas fa-plus-circle"></i> Nova Notícia</h2>
+                <button id="closeModal" class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="newsForm" class="modal-body">
+                <input type="hidden" id="formId" value="">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-heading"></i> Título de Impacto *</label>
+                        <input type="text" id="formTitulo" required placeholder='Ex: O "Padrinho" Preso com o PT'>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-folder"></i> Categoria *</label>
+                        <input type="text" id="formCategoria" required placeholder="Ex: Histórico do Partido">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-align-left"></i> Resumo / Mensagem *</label>
+                    <textarea id="formResumo" required rows="3" placeholder="Descreva os fatos de forma impactante. Use tags HTML como <strong> para destaque."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-link"></i> Link da Fonte *</label>
+                        <input type="url" id="formLink" required placeholder="https://g1.globo.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-newspaper"></i> Nome da Fonte *</label>
+                        <input type="text" id="formFonte" required placeholder="Ex: G1, CNN, VEJA">
+                    </div>
+                </div>
+
+                <div class="form-row form-row-4">
+                    <div class="form-group">
+                        <label><i class="fas fa-filter"></i> Filtro *</label>
+                        <select id="formFiltro" required>
+                            <option value="">Selecione...</option>
+                            <option value="corrupcao">Corrupção</option>
+                            <option value="justica">Justiça</option>
+                            <option value="poder">Abuso de Poder</option>
+                            <option value="hipocrisia">Hipocrisia</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-exclamation-triangle"></i> Severidade *</label>
+                        <select id="formSeveridade" required>
+                            <option value="">Selecione...</option>
+                            <option value="critico">Crítico</option>
+                            <option value="grave">Grave</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-calendar"></i> Ano / Período *</label>
+                        <input type="text" id="formAno" required placeholder="Ex: 2024, Mar/2026">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-sort-numeric-down"></i> Ordem</label>
+                        <input type="number" id="formOrdem" placeholder="1" min="1">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label><i class="fas fa-icons"></i> Ícone (FontAwesome)</label>
+                        <input type="text" id="formIcone" placeholder="fas fa-landmark">
+                        <span class="form-hint">Ex: fas fa-gavel, fas fa-user-secret</span>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-tags"></i> Tags</label>
+                        <input type="text" id="formTags" placeholder="Mensalão, PL">
+                        <span class="form-hint">Separadas por vírgula</span>
+                    </div>
+                </div>
+
+                <fieldset class="form-fieldset">
+                    <legend><i class="fas fa-clock"></i> Linha do Tempo</legend>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Título na Timeline</label>
+                            <input type="text" id="formTimelineTitulo" placeholder="Ex: Mensalão — Valdemar Condenado">
+                        </div>
+                        <div class="form-group">
+                            <label>Descrição na Timeline</label>
+                            <input type="text" id="formTimelineDesc" placeholder="Breve descrição para a timeline">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="modal-footer">
+                    <button type="button" id="cancelBtn" class="btn-cancel">Cancelar</button>
+                    <button type="submit" class="btn-save">
+                        <i class="fas fa-save"></i> <span id="saveLabel">Salvar</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: Confirmar Exclusão -->
+    <div id="deleteModal" class="modal-overlay" style="display:none;">
+        <div class="modal modal-sm">
+            <div class="modal-header modal-header-danger">
+                <h2><i class="fas fa-trash-alt"></i> Confirmar Exclusão</h2>
+                <button class="modal-close" onclick="closeDeleteModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p class="delete-message">Tem certeza que deseja excluir a notícia:</p>
+                <p class="delete-title" id="deleteTitle"></p>
+                <p class="delete-warning"><i class="fas fa-exclamation-triangle"></i> Esta ação não pode ser desfeita.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" onclick="closeDeleteModal()">Cancelar</button>
+                <button type="button" class="btn-delete" id="confirmDeleteBtn">
+                    <i class="fas fa-trash"></i> Excluir
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" style="display:none;">
+        <i class="toast-icon"></i>
+        <span class="toast-message"></span>
+    </div>
+
+    <script src="js/dados.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

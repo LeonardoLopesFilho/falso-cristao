@@ -59,11 +59,11 @@
             </p>
             <div class="hero-stats">
                 <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-                    <span class="stat-number" data-count="8">0</span>
+                    <span class="stat-number" id="statEscandalos" data-count="0">0</span>
                     <span class="stat-label">Escândalos Documentados</span>
                 </div>
                 <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
-                    <span class="stat-number" data-count="8">0</span>
+                    <span class="stat-number" id="statFontes" data-count="0">0</span>
                     <span class="stat-label">Fontes Verificadas</span>
                 </div>
                 <div class="stat-item" data-aos="fade-up" data-aos-delay="600">
@@ -127,209 +127,12 @@
                 </button>
             </div>
 
-            <!-- Cards de Notícias -->
-            <div class="news-grid">
-
-                <!-- Card 1 -->
-                <article class="news-card" data-category="corrupcao" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-severity severity-critical">
-                        <i class="fas fa-skull-crossbones"></i> CRÍTICO
-                    </div>
-                    <div class="card-category">
-                        <i class="fas fa-landmark"></i> Histórico do Partido
-                    </div>
-                    <h3 class="card-title">O "Padrinho" Preso com o PT</h3>
-                    <p class="card-body">
-                        Valdemar Costa Neto, dono do PL, foi <strong>condenado e preso no Mensalão</strong> 
-                        por vender apoio ao governo Lula. É este o partido que diz combater a corrupção?
-                    </p>
-                    <div class="card-evidence">
-                        <i class="fas fa-link"></i>
-                        <a href="https://g1.globo.com/politica/mensalao/noticia/2013/11/valdemar-costa-neto-se-entrega-a-policia-federal.html" target="_blank" rel="noopener">
-                            G1 — Valdemar se entrega à PF
-                        </a>
-                    </div>
-                    <div class="card-footer">
-                        <span class="card-tag"><i class="fas fa-balance-scale"></i> Mensalão</span>
-                        <span class="card-tag"><i class="fas fa-users"></i> PL</span>
-                    </div>
-                </article>
-
-                <!-- Card 2 -->
-                <article class="news-card" data-category="poder" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-severity severity-critical">
-                        <i class="fas fa-skull-crossbones"></i> CRÍTICO
-                    </div>
-                    <div class="card-category">
-                        <i class="fas fa-user-secret"></i> Uso da Máquina
-                    </div>
-                    <h3 class="card-title">A "Abin Paralela" da Família</h3>
-                    <p class="card-body">
-                        A PF confirmou que a inteligência do Estado foi <strong>usada ilegalmente</strong> 
-                        para produzir relatórios de defesa para Flávio Bolsonaro. Espionagem estatal a serviço da família.
-                    </p>
-                    <div class="card-evidence">
-                        <i class="fas fa-link"></i>
-                        <a href="https://g1.globo.com/politica/noticia/2024/01/25/abin-paralela-pf-confirma-relatorio-sobre-flavio-bolsonaro.ghtml" target="_blank" rel="noopener">
-                            G1 — Relatório da PF sobre Abin
-                        </a>
-                    </div>
-                    <div class="card-footer">
-                        <span class="card-tag"><i class="fas fa-eye-slash"></i> Espionagem</span>
-                        <span class="card-tag"><i class="fas fa-shield-alt"></i> Abin</span>
-                    </div>
-                </article>
-
-                <!-- Card 3 -->
-                <article class="news-card" data-category="justica" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-severity severity-high">
-                        <i class="fas fa-exclamation-triangle"></i> GRAVE
-                    </div>
-                    <div class="card-category">
-                        <i class="fas fa-gavel"></i> Combate à Corrupção
-                    </div>
-                    <h3 class="card-title">O Fim da Lava Jato por Decreto</h3>
-                    <p class="card-body">
-                        Para proteger o "pescoço" da família, os Bolsonaro articularam o 
-                        <strong>desmonte da Lava Jato</strong> com a nomeação de Augusto Aras como PGR.
-                    </p>
-                    <div class="card-evidence">
-                        <i class="fas fa-link"></i>
-                        <a href="https://www.cnnbrasil.com.br/politica/lava-jato-augusto-aras-fim-operacao/" target="_blank" rel="noopener">
-                            CNN — Fim da Lava Jato e Aras
-                        </a>
-                    </div>
-                    <div class="card-footer">
-                        <span class="card-tag"><i class="fas fa-water"></i> Lava Jato</span>
-                        <span class="card-tag"><i class="fas fa-user-tie"></i> PGR</span>
-                    </div>
-                </article>
-
-                <!-- Card 4 -->
-                <article class="news-card" data-category="justica" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-severity severity-critical">
-                        <i class="fas fa-skull-crossbones"></i> CRÍTICO
-                    </div>
-                    <div class="card-category">
-                        <i class="fas fa-shield-alt"></i> Justiça Pessoal
-                    </div>
-                    <h3 class="card-title">Blindagem no Caso Rachadinhas</h3>
-                    <p class="card-body">
-                        Flávio Bolsonaro <strong>anulou provas e quebras de sigilo no STJ</strong> 
-                        através de manobras técnicas, evitando o julgamento do crime de peculato.
-                    </p>
-                    <div class="card-evidence">
-                        <i class="fas fa-link"></i>
-                        <a href="https://g1.globo.com/politica/noticia/2021/06/stj-anula-quebra-de-sigilo-bancario-de-flavio-bolsonaro.ghtml" target="_blank" rel="noopener">
-                            G1 — STJ anula quebra de sigilo
-                        </a>
-                    </div>
-                    <div class="card-footer">
-                        <span class="card-tag"><i class="fas fa-money-bill-wave"></i> Rachadinha</span>
-                        <span class="card-tag"><i class="fas fa-gavel"></i> STJ</span>
-                    </div>
-                </article>
-
-                <!-- Card 5 -->
-                <article class="news-card" data-category="hipocrisia" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-severity severity-high">
-                        <i class="fas fa-exclamation-triangle"></i> GRAVE
-                    </div>
-                    <div class="card-category">
-                        <i class="fas fa-theater-masks"></i> Bastidores do STF
-                    </div>
-                    <h3 class="card-title">Negociações com o "Inimigo"</h3>
-                    <p class="card-body">
-                        Em março/2026, Flávio <strong>buscou o STF para negociar</strong> a domiciliar do pai, 
-                        enquanto mantinha discurso público de ataque ao tribunal. Hipocrisia dupla.
-                    </p>
-                    <div class="card-evidence">
-                        <i class="fas fa-link"></i>
-                        <a href="https://veja.abril.com.br/politica/flavio-bolsonaro-pedido-moraes-domiciliar" target="_blank" rel="noopener">
-                            VEJA — Pedido de Flávio a Moraes
-                        </a>
-                    </div>
-                    <div class="card-footer">
-                        <span class="card-tag"><i class="fas fa-masks-theater"></i> Hipocrisia</span>
-                        <span class="card-tag"><i class="fas fa-landmark"></i> STF</span>
-                    </div>
-                </article>
-
-                <!-- Card 6 -->
-                <article class="news-card" data-category="corrupcao" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-severity severity-critical">
-                        <i class="fas fa-skull-crossbones"></i> CRÍTICO
-                    </div>
-                    <div class="card-category">
-                        <i class="fas fa-hand-holding-usd"></i> Corrupção no PL
-                    </div>
-                    <h3 class="card-title">Propina no Partido do "Capitão"</h3>
-                    <p class="card-body">
-                        Em março/2026, deputados do PL (Josimar e outros) foram <strong>condenados por cobrar propina</strong> 
-                        em emendas parlamentares. O partido da "nova política" repete os velhos vícios.
-                    </p>
-                    <div class="card-evidence">
-                        <i class="fas fa-link"></i>
-                        <a href="https://agenciabrasil.ebc.com.br/politica/noticia/2026-03/stf-condena-deputados-pl-propina" target="_blank" rel="noopener">
-                            Agência Brasil — STF condena PL
-                        </a>
-                    </div>
-                    <div class="card-footer">
-                        <span class="card-tag"><i class="fas fa-money-bill-wave"></i> Propina</span>
-                        <span class="card-tag"><i class="fas fa-file-invoice-dollar"></i> Emendas</span>
-                    </div>
-                </article>
-
-                <!-- Card 7 -->
-                <article class="news-card" data-category="hipocrisia" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-severity severity-high">
-                        <i class="fas fa-exclamation-triangle"></i> GRAVE
-                    </div>
-                    <div class="card-category">
-                        <i class="fas fa-venus"></i> Direitos Sociais
-                    </div>
-                    <h3 class="card-title">Aliança com o PT contra Mulheres</h3>
-                    <p class="card-body">
-                        Flávio votou <strong>junto com o PT para "desidratar"</strong> a lei da misoginia, 
-                        tornando-a vaga para proteger aliados de processos por discurso de ódio contra mulheres.
-                    </p>
-                    <div class="card-evidence">
-                        <i class="fas fa-link"></i>
-                        <a href="https://g1.globo.com/politica/noticia/2026/03/senado-aprova-pl-misoginia-acordo.ghtml" target="_blank" rel="noopener">
-                            G1 — Senado aprova PL da Misoginia com acordo
-                        </a>
-                    </div>
-                    <div class="card-footer">
-                        <span class="card-tag"><i class="fas fa-handshake"></i> PT + PL</span>
-                        <span class="card-tag"><i class="fas fa-female"></i> Misoginia</span>
-                    </div>
-                </article>
-
-                <!-- Card 8 -->
-                <article class="news-card" data-category="corrupcao" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-severity severity-critical">
-                        <i class="fas fa-skull-crossbones"></i> CRÍTICO
-                    </div>
-                    <div class="card-category">
-                        <i class="fas fa-exclamation-circle"></i> Crimes Comuns
-                    </div>
-                    <h3 class="card-title">Ouro Ilegal e Armas</h3>
-                    <p class="card-body">
-                        Valdemar Costa Neto foi <strong>preso em 2024 com pepita de ouro de garimpo ilegal</strong> 
-                        e arma sem registro durante buscas da PF. O "padrinho" do PL é reincidente.
-                    </p>
-                    <div class="card-evidence">
-                        <i class="fas fa-link"></i>
-                        <a href="https://agenciabrasil.ebc.com.br/politica/noticia/2024/valdemar-costa-neto-preso-ouro-arma" target="_blank" rel="noopener">
-                            Agência Brasil — Valdemar é preso
-                        </a>
-                    </div>
-                    <div class="card-footer">
-                        <span class="card-tag"><i class="fas fa-gem"></i> Garimpo</span>
-                        <span class="card-tag"><i class="fas fa-gun"></i> Arma ilegal</span>
-                    </div>
-                </article>
-
+            <!-- Cards de Notícias (carregados dinamicamente via API) -->
+            <div class="news-grid" id="newsGrid">
+                <div class="loading-placeholder" style="grid-column: 1/-1; text-align:center; padding:60px; color:#8A9A8A;">
+                    <i class="fas fa-spinner fa-spin" style="font-size:2rem; margin-bottom:12px; display:block; color:var(--brasil-green);"></i>
+                    Carregando notícias...
+                </div>
             </div>
         </div>
     </section>
@@ -343,70 +146,10 @@
                 <p class="section-desc">Um padrão que se repete: crimes, blindagem e impunidade.</p>
             </div>
 
-            <div class="timeline">
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2012</span>
-                        <h4>Mensalão — Valdemar Condenado</h4>
-                        <p>O dono do PL é condenado e preso por compra de votos no escândalo do Mensalão do PT.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2018</span>
-                        <h4>Rachadinhas — O Escândalo Estourado</h4>
-                        <p>Relatório do COAF revela movimentações suspeitas de Queiroz, ex-assessor de Flávio Bolsonaro.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2019</span>
-                        <h4>Lava Jato Desmontada</h4>
-                        <p>Nomeação de Augusto Aras como PGR marca o início do desmonte sistemático da operação.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2021</span>
-                        <h4>STJ Anula Provas</h4>
-                        <p>Flávio consegue anular quebras de sigilo e provas no caso das rachadinhas no STJ.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2024</span>
-                        <h4>Abin Paralela Revelada</h4>
-                        <p>PF confirma uso ilegal da inteligência do Estado para proteger a família Bolsonaro.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">2024</span>
-                        <h4>Valdemar Preso — De Novo</h4>
-                        <p>O presidente do PL é flagrado com ouro ilegal e arma sem registro.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Mar/2026</span>
-                        <h4>Negociação Secreta com STF</h4>
-                        <p>Flávio procura Moraes nos bastidores enquanto ataca o tribunal publicamente.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Mar/2026</span>
-                        <h4>PL Condenado por Propina</h4>
-                        <p>Deputados do PL são condenados pelo STF por cobrar propina em emendas parlamentares.</p>
-                    </div>
+            <!-- Timeline (carregada dinamicamente via API) -->
+            <div class="timeline" id="timelineContainer">
+                <div style="text-align:center; padding:40px; color:#8A9A8A;">
+                    <i class="fas fa-spinner fa-spin"></i> Carregando timeline...
                 </div>
             </div>
         </div>
@@ -638,6 +381,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 — A Verdade Não Tem Partido. Feito com <i class="fas fa-heart heart-brasil"></i> pelo povo brasileiro. 🇧🇷</p>
+                <p style="margin-top:8px;"><a href="admin.html" style="color:#333; font-size:0.7rem; text-decoration:none;">⚙</a></p>
             </div>
         </div>
     </footer>
@@ -649,6 +393,7 @@
 
     <!-- AOS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="js/dados.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
